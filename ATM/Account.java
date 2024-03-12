@@ -31,7 +31,8 @@ public class Account {
 		this.retireBalance = retireBalance;
 		this.investBalance = investBalance;
 	}
-	public double totalBalance(){ // SHOW ALL ACCOUNT BALANCE CODE
+
+	public double totalBalance() { // SHOW ALL ACCOUNT BALANCE CODE
 		totalBalance = getCheckingBalance() + getSavingBalance() + getRetireBalance() + getInvestBalance();
 		return totalBalance;
 	}
@@ -79,10 +80,12 @@ public class Account {
 		savingBalance = (savingBalance - amount);
 		return savingBalance;
 	}
+
 	public double calcRetireWithdraw(double amount) { // CALC RETIRE WITHDRAWL
 		retireBalance = (retireBalance - amount);
 		return retireBalance;
 	}
+
 	public double calcInvestWithdraw(double amount) { // CALC INVEST WITHDRAWL
 		investBalance = (investBalance - amount);
 		return investBalance;
@@ -97,10 +100,12 @@ public class Account {
 		savingBalance = (savingBalance + amount);
 		return savingBalance;
 	}
+
 	public double calcRetireDeposit(double amount) { // CALC RETIREMENT DEPOSIT
 		retireBalance = (retireBalance + amount);
 		return retireBalance;
 	}
+
 	public double calcInvestDeposit(double amount) { // CALC INVESTMENT DEPOSIT
 		investBalance = (investBalance + amount);
 		return investBalance;
@@ -311,25 +316,25 @@ public class Account {
 					System.out.print("\nChoice: ");
 					int choice = input.nextInt();
 					switch (choice) {
-					case 1:
-						System.out.println("\nCurrent Checking Account Balance: " + moneyFormat.format(checkingBalance));
-						System.out.print("\nAmount you want to deposit into your Savings Account: ");
-						double amount = input.nextDouble();
-						if ((savingBalance + amount) >= 0 && (checkingBalance - amount) >= 0 && amount >= 0) {
-							calcCheckTransfer(amount);
-							System.out.println("\nCurrent Savings Account Balance: " + moneyFormat.format(savingBalance));
-							System.out.println(
-									"\nCurrent Checking Account Balance: " + moneyFormat.format(checkingBalance));
-							end = true;
-						} else {
-							System.out.println("\nBalance Cannot Be Negative.");
-						}
-						break;
-					case 2:
-						return;
-					default:
-						System.out.println("\nInvalid Choice.");
-						break;
+						case 1:
+							System.out.println("\nCurrent Checking Account Balance: " + moneyFormat.format(checkingBalance));
+							System.out.print("\nAmount you want to deposit into your Savings Account: ");
+							double amount = input.nextDouble();
+							if ((savingBalance + amount) >= 0 && (checkingBalance - amount) >= 0 && amount >= 0) {
+								calcCheckTransfer(amount);
+								System.out.println("\nCurrent Savings Account Balance: " + moneyFormat.format(savingBalance));
+								System.out.println(
+										"\nCurrent Checking Account Balance: " + moneyFormat.format(checkingBalance));
+								end = true;
+							} else {
+								System.out.println("\nBalance Cannot Be Negative.");
+							}
+							break;
+						case 2:
+							return;
+						default:
+							System.out.println("\nInvalid Choice.");
+							break;
 					}
 				} else if (accType.equals("Savings")) {
 					System.out.println("\nSelect an account you wish to transfer funds to: ");
@@ -338,30 +343,82 @@ public class Account {
 					System.out.print("\nChoice: ");
 					int choice = input.nextInt();
 					switch (choice) {
-					case 1:
-						System.out.println("\nCurrent Savings Account Balance: " + moneyFormat.format(savingBalance));
-						System.out.print("\nAmount you want to deposit into your savings account: ");
-						double amount = input.nextDouble();
-						if ((checkingBalance + amount) >= 0 && (savingBalance - amount) >= 0 && amount >= 0) {
-							calcSavingTransfer(amount);
-							System.out.println("\nCurrent checking account balance: " + moneyFormat.format(checkingBalance));
-							System.out.println("\nCurrent savings account balance: " + moneyFormat.format(savingBalance));
-							end = true;
-						} else {
-							System.out.println("\nBalance Cannot Be Negative.");
-						}
-						break;
-					case 2:
-						return;
-					default:
-						System.out.println("\nInvalid Choice.");
-						break;
+						case 1:
+							System.out.println("\nCurrent Savings Account Balance: " + moneyFormat.format(savingBalance));
+							System.out.print("\nAmount you want to deposit into your savings account: ");
+							double amount = input.nextDouble();
+							if ((checkingBalance + amount) >= 0 && (savingBalance - amount) >= 0 && amount >= 0) {
+								calcSavingTransfer(amount);
+								System.out.println("\nCurrent checking account balance: " + moneyFormat.format(checkingBalance));
+								System.out.println("\nCurrent savings account balance: " + moneyFormat.format(savingBalance));
+								end = true;
+							} else {
+								System.out.println("\nBalance Cannot Be Negative.");
+							}
+							break;
+						case 2:
+							return;
+						default:
+							System.out.println("\nInvalid Choice.");
+							break;
+					}
+				} else if (accType.equals("Retirement")) { //RETIREMENT TRANSFER
+					System.out.println("\nSelect an account you wish to transfer funds to: ");
+					System.out.println("1. Investment");
+					System.out.println("2. Exit");
+					System.out.print("\nChoice: ");
+					int choice = input.nextInt();
+					switch (choice) {
+						case 1:
+							System.out.println("\nCurrent Retirement Account Balance: " + moneyFormat.format(retireBalance));
+							System.out.print("\nAmount you want to deposit into your savings account: ");
+							double amount = input.nextDouble();
+							if ((investBalance + amount) >= 0 && (retireBalance - amount) >= 0 && amount >= 0) {
+								calcRetireTransfer(amount);
+								System.out.println("\nCurrent investment account balance: " + moneyFormat.format(investBalance));
+								System.out.println("\nCurrent retirement account balance: " + moneyFormat.format(retireBalance));
+								end = true;
+							} else {
+								System.out.println("\nBalance Cannot Be Negative.");
+							}
+							break;
+						case 2:
+							return;
+						default:
+							System.out.println("\nInvalid Choice.");
+							break;
+					}
+				} else if (accType.equals("Investment")) { //INVESTMENT TRANSFER
+					System.out.println("\nSelect an account you wish to transfer funds to: ");
+					System.out.println("1. Retirement");
+					System.out.println("2. Exit");
+					System.out.print("\nChoice: ");
+					int choice = input.nextInt();
+					switch (choice) {
+						case 1:
+							System.out.println("\nCurrent Investment Account Balance: " + moneyFormat.format(investBalance));
+							System.out.print("\nAmount you want to deposit into your savings account: ");
+							double amount = input.nextDouble();
+							if ((retireBalance + amount) >= 0 && (investBalance - amount) >= 0 && amount >= 0) {
+								calcInvestTransfer(amount);
+								System.out.println("\nCurrent retirement account balance: " + moneyFormat.format(retireBalance));
+								System.out.println("\nCurrent investment account balance: " + moneyFormat.format(investBalance));
+								end = true;
+							} else {
+								System.out.println("\nBalance Cannot Be Negative.");
+							}
+							break;
+						case 2:
+							return;
+						default:
+							System.out.println("\nInvalid Choice.");
+							break;
 					}
 				}
-			} catch (InputMismatchException e) {
-				System.out.println("\nInvalid Choice.");
-				input.next();
+				} catch(InputMismatchException e){
+					System.out.println("\nInvalid Choice.");
+					input.next();
+				}
 			}
 		}
 	}
-}

@@ -267,15 +267,6 @@ public class OptionMenu {
 
 
 
-
-
-
-
-
-
-
-
-
 	public void createAccount() throws IOException {
 		int cst_no = 0;
 		boolean end = false;
