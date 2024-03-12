@@ -77,7 +77,7 @@ public class OptionMenu {
 		while (!end) {
 			try {
 				System.out.println("\nChecking Account: ");
-				System.out.println(" Type 1 - View Balance");
+				System.out.println(" Type 1 - View Checking Balance");
 				System.out.println(" Type 2 - Withdraw Funds");
 				System.out.println(" Type 3 - Deposit Funds");
 				System.out.println(" Type 4 - Transfer Funds");
@@ -124,7 +124,7 @@ public class OptionMenu {
 		while (!end) {
 			try {
 				System.out.println("\nSavings Account: ");
-				System.out.println(" Type 1 - View Balance");
+				System.out.println(" Type 1 - View Savings Balance");
 				System.out.println(" Type 2 - Withdraw Funds");
 				System.out.println(" Type 3 - Deposit Funds");
 				System.out.println(" Type 4 - Transfer Funds");

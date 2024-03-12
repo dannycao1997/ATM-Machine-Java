@@ -30,7 +30,7 @@ public class Account {
 
 	public double totalBalance(){
 		totalBalance = getCheckingBalance() + getSavingBalance();
-		return totalBalance();
+		return totalBalance;
 	}
 
 	public int setCustomerNumber(int customerNumber) {
