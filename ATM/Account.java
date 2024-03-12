@@ -281,7 +281,6 @@ public class Account {
 		}
 	}
 
-
 	public void getInvestDepositInput() { // GET INVESTMENT DEPOSIT INPUT
 		boolean end = false;
 		while (!end) {
@@ -345,7 +344,7 @@ public class Account {
 					switch (choice) {
 						case 1:
 							System.out.println("\nCurrent Savings Account Balance: " + moneyFormat.format(savingBalance));
-							System.out.print("\nAmount you want to deposit into your savings account: ");
+							System.out.print("\nAmount you want to deposit into your Checking account: ");
 							double amount = input.nextDouble();
 							if ((checkingBalance + amount) >= 0 && (savingBalance - amount) >= 0 && amount >= 0) {
 								calcSavingTransfer(amount);
@@ -371,7 +370,7 @@ public class Account {
 					switch (choice) {
 						case 1:
 							System.out.println("\nCurrent Retirement Account Balance: " + moneyFormat.format(retireBalance));
-							System.out.print("\nAmount you want to deposit into your savings account: ");
+							System.out.print("\nAmount you want to deposit into your Investment account: ");
 							double amount = input.nextDouble();
 							if ((investBalance + amount) >= 0 && (retireBalance - amount) >= 0 && amount >= 0) {
 								calcRetireTransfer(amount);
@@ -397,7 +396,7 @@ public class Account {
 					switch (choice) {
 						case 1:
 							System.out.println("\nCurrent Investment Account Balance: " + moneyFormat.format(investBalance));
-							System.out.print("\nAmount you want to deposit into your savings account: ");
+							System.out.print("\nAmount you want to deposit into your Retirement account: ");
 							double amount = input.nextDouble();
 							if ((retireBalance + amount) >= 0 && (investBalance - amount) >= 0 && amount >= 0) {
 								calcInvestTransfer(amount);
