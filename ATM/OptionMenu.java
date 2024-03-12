@@ -47,7 +47,9 @@ public class OptionMenu {
 				System.out.println("\nSelect the account you want to access: ");
 				System.out.println(" Type 1 - Checking Account");
 				System.out.println(" Type 2 - Savings Account");
-				System.out.println(" Type 3 - Exit");
+				System.out.println(" Type 3 - Retirement Account");
+				System.out.println(" Type 4 - Investment Account");
+				System.out.println(" Type 5 - Exit");
 				System.out.print("\nChoice: ");
 
 				int selection = menuInput.nextInt();
@@ -60,6 +62,12 @@ public class OptionMenu {
 					getSaving(acc);
 					break;
 				case 3:
+					//getRetire(acc); need to come back and fix
+					break;
+				case 4:
+					//getInvest(acc); need to come back and fix
+					break;
+				case 5:
 					end = true;
 					break;
 				default:
