@@ -171,11 +171,109 @@ public class OptionMenu {
 		}
 	}
 
-	public void getRetire(Account acc){ // need to finish code
+
+
+	public void getRetire(Account acc){ // RETIREMENT
+		boolean end = false;
+		while (!end) {
+			try {
+				System.out.println("\nRetirement Account: ");
+				System.out.println(" Type 1 - View Retirement Balance");
+				System.out.println(" Type 2 - Withdraw Funds");
+				System.out.println(" Type 3 - Deposit Funds");
+				System.out.println(" Type 4 - Transfer Funds");
+				System.out.println(" Type 5 - View All Account Balance ");
+				System.out.println(" Type 6 - Exit");
+				System.out.print("Choice: ");
+				int selection = menuInput.nextInt();
+				switch (selection) {
+					case 1:
+						System.out.println("\nRetirement Account Balance: " + moneyFormat.format(acc.getRetireBalance()));
+						break;
+					case 2:
+						acc.getRetireWithdrawInput();
+						break;
+					case 3:
+						acc.getRetireDepositInput();
+						break;
+					case 4:
+						acc.getTransferInput("Retirement");
+						break;
+
+					case 5:
+						System.out.println("\nTotal Balance: " + moneyFormat.format(acc.totalBalance()));
+						break;
+
+					case 6:
+						end = true;
+						break;
+					default:
+						System.out.println("\nInvalid Choice.");
+				}
+			} catch (InputMismatchException e) {
+				System.out.println("\nInvalid Choice.");
+				menuInput.next();
+			}
+		}
 	}
 
-	public void getInvest(Account acc){ // need to finish code
+
+
+
+
+	public void getInvest(Account acc){ //INVESTMENT
+		boolean end = false;
+		while (!end) {
+			try {
+				System.out.println("\nInvestment Account: ");
+				System.out.println(" Type 1 - View Investment Balance");
+				System.out.println(" Type 2 - Withdraw Funds");
+				System.out.println(" Type 3 - Deposit Funds");
+				System.out.println(" Type 4 - Transfer Funds");
+				System.out.println(" Type 5 - View All Account Balance ");
+				System.out.println(" Type 6 - Exit");
+				System.out.print("Choice: ");
+				int selection = menuInput.nextInt();
+				switch (selection) {
+					case 1:
+						System.out.println("\nInvestment Account Balance: " + moneyFormat.format(acc.getInvestBalance()));
+						break;
+					case 2:
+						acc.getInvestWithdrawInput();
+						break;
+					case 3:
+						acc.getInvestDepositInput();
+						break;
+					case 4:
+						acc.getTransferInput("Investment");
+						break;
+
+					case 5:
+						System.out.println("\nTotal Balance: " + moneyFormat.format(acc.totalBalance()));
+						break;
+
+					case 6:
+						end = true;
+						break;
+					default:
+						System.out.println("\nInvalid Choice.");
+				}
+			} catch (InputMismatchException e) {
+				System.out.println("\nInvalid Choice.");
+				menuInput.next();
+			}
+		}
 	}
+
+
+
+
+
+
+
+
+
+
 
 
 	public void createAccount() throws IOException {

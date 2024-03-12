@@ -31,9 +31,8 @@ public class Account {
 		this.retireBalance = retireBalance;
 		this.investBalance = investBalance;
 	}
-
 	public double totalBalance(){ // SHOW ALL ACCOUNT BALANCE CODE
-		totalBalance = getCheckingBalance() + getSavingBalance();
+		totalBalance = getCheckingBalance() + getSavingBalance() + getRetireBalance() + getInvestBalance();
 		return totalBalance;
 	}
 
@@ -80,6 +79,14 @@ public class Account {
 		savingBalance = (savingBalance - amount);
 		return savingBalance;
 	}
+	public double calcRetireWithdraw(double amount) { // CALC RETIRE WITHDRAWL
+		retireBalance = (retireBalance - amount);
+		return retireBalance;
+	}
+	public double calcInvestWithdraw(double amount) { // CALC INVEST WITHDRAWL
+		investBalance = (investBalance - amount);
+		return investBalance;
+	}
 
 	public double calcCheckingDeposit(double amount) {
 		checkingBalance = (checkingBalance + amount);
@@ -90,6 +97,14 @@ public class Account {
 		savingBalance = (savingBalance + amount);
 		return savingBalance;
 	}
+	public double calcRetireDeposit(double amount) { // CALC RETIREMENT DEPOSIT
+		retireBalance = (retireBalance + amount);
+		return retireBalance;
+	}
+	public double calcInvestDeposit(double amount) { // CALC INVESTMENT DEPOSIT
+		investBalance = (investBalance + amount);
+		return investBalance;
+	}
 
 	public void calcCheckTransfer(double amount) {
 		checkingBalance = checkingBalance - amount;
@@ -99,6 +114,16 @@ public class Account {
 	public void calcSavingTransfer(double amount) {
 		savingBalance = savingBalance - amount;
 		checkingBalance = checkingBalance + amount;
+	}
+
+	public void calcRetireTransfer(double amount) { // CALC RETIRE TRANSFER
+		retireBalance = retireBalance - amount;
+		investBalance = investBalance + amount;
+	}
+
+	public void calcInvestTransfer(double amount) { // CALC INVEST TRANSFER
+		investBalance = investBalance - amount;
+		retireBalance = retireBalance + amount;
 	}
 
 	public void getCheckingWithdrawInput() {
@@ -143,6 +168,49 @@ public class Account {
 		}
 	}
 
+	public void getRetireWithdrawInput() { // GET RETIREMENT WITHDRAWAL INPUT
+		boolean end = false;
+		while (!end) {
+			try {
+				System.out.println("\nCurrent Retirement Account Balance: " + moneyFormat.format(retireBalance));
+				System.out.print("\nAmount you want to withdraw from Retirement Account: ");
+				double amount = input.nextDouble();
+				if ((retireBalance - amount) >= 0 && amount >= 0) {
+					calcRetireWithdraw(amount);
+					System.out.println("\nCurrent Retirement Account Balance: " + moneyFormat.format(retireBalance));
+					end = true;
+				} else {
+					System.out.println("\nBalance Cannot Be Negative.");
+				}
+			} catch (InputMismatchException e) {
+				System.out.println("\nInvalid Choice.");
+				input.next();
+			}
+		}
+	}
+
+	public void getInvestWithdrawInput() { // GET INVESTMENT WITHDRAWAL INPUT
+		boolean end = false;
+		while (!end) {
+			try {
+				System.out.println("\nCurrent Investment Account Balance: " + moneyFormat.format(investBalance));
+				System.out.print("\nAmount you want to withdraw from Investment Account: ");
+				double amount = input.nextDouble();
+				if ((investBalance - amount) >= 0 && amount >= 0) {
+					calcInvestWithdraw(amount);
+					System.out.println("\nCurrent Investment Account Balance: " + moneyFormat.format(investBalance));
+					end = true;
+				} else {
+					System.out.println("\nBalance Cannot Be Negative.");
+				}
+			} catch (InputMismatchException e) {
+				System.out.println("\nInvalid Choice.");
+				input.next();
+			}
+		}
+	}
+
+
 	public void getCheckingDepositInput() {
 		boolean end = false;
 		while (!end) {
@@ -185,6 +253,52 @@ public class Account {
 			}
 		}
 	}
+
+	public void getRetireDepositInput() { // GET RETIREMENT DEPOSIT INPUT
+		boolean end = false;
+		while (!end) {
+			try {
+				System.out.println("\nCurrent Retirement Account Balance: " + moneyFormat.format(retireBalance));
+				System.out.print("\nAmount you want to deposit into your Retirement Account: ");
+				double amount = input.nextDouble();
+
+				if ((retireBalance + amount) >= 0 && amount >= 0) {
+					calcRetireDeposit(amount);
+					System.out.println("\nCurrent Retirement Account Balance: " + moneyFormat.format(retireBalance));
+					end = true;
+				} else {
+					System.out.println("\nBalance Cannot Be Negative.");
+				}
+			} catch (InputMismatchException e) {
+				System.out.println("\nInvalid Choice.");
+				input.next();
+			}
+		}
+	}
+
+
+	public void getInvestDepositInput() { // GET INVESTMENT DEPOSIT INPUT
+		boolean end = false;
+		while (!end) {
+			try {
+				System.out.println("\nCurrent Investment Account Balance: " + moneyFormat.format(investBalance));
+				System.out.print("\nAmount you want to deposit into your Investment Account: ");
+				double amount = input.nextDouble();
+
+				if ((investBalance + amount) >= 0 && amount >= 0) {
+					calcInvestDeposit(amount);
+					System.out.println("\nCurrent Investment Account Balance: " + moneyFormat.format(investBalance));
+					end = true;
+				} else {
+					System.out.println("\nBalance Cannot Be Negative.");
+				}
+			} catch (InputMismatchException e) {
+				System.out.println("\nInvalid Choice.");
+				input.next();
+			}
+		}
+	}
+
 
 	public void getTransferInput(String accType) {
 		boolean end = false;
