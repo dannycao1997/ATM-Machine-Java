@@ -62,10 +62,10 @@ public class OptionMenu {
 					getSaving(acc);
 					break;
 				case 3:
-					//getRetire(acc); need to come back and fix
+					getRetire(acc); // retirement account case option
 					break;
 				case 4:
-					//getInvest(acc); need to come back and fix
+					getInvest(acc); // investment account case option
 					break;
 				case 5:
 					end = true;
@@ -171,6 +171,13 @@ public class OptionMenu {
 		}
 	}
 
+	public void getRetire(Account acc){ // need to finish code
+	}
+
+	public void getInvest(Account acc){ // need to finish code
+	}
+
+
 	public void createAccount() throws IOException {
 		int cst_no = 0;
 		boolean end = false;
@@ -202,8 +209,8 @@ public class OptionMenu {
 	}
 
 	public void mainMenu() throws IOException {
-		data.put(952141, new Account(952141, 191904, 1000, 5000));
-		data.put(123, new Account(123, 123, 20000, 50000));
+		data.put(952141, new Account(952141, 191904, 1000, 5000, 1, 2));
+		data.put(123, new Account(123, 123, 20000, 50000, 3,6));
 		boolean end = false;
 		while (!end) {
 			try {

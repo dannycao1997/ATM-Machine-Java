@@ -8,7 +8,9 @@ public class Account {
 	private int pinNumber;
 	private double checkingBalance = 0;
 	private double savingBalance = 0;
-	private double totalBalance = 0;
+	private double totalBalance = 0; // total balance
+	private double retireBalance = 0; // retire balance
+	private double investBalance = 0; // invest balance
 
 	Scanner input = new Scanner(System.in);
 	DecimalFormat moneyFormat = new DecimalFormat("'$'###,##0.00");
@@ -21,14 +23,16 @@ public class Account {
 		this.pinNumber = pinNumber;
 	}
 
-	public Account(int customerNumber, int pinNumber, double checkingBalance, double savingBalance) {
+	public Account(int customerNumber, int pinNumber, double checkingBalance, double savingBalance, double retireBalance, double investBalance) {
 		this.customerNumber = customerNumber;
 		this.pinNumber = pinNumber;
 		this.checkingBalance = checkingBalance;
 		this.savingBalance = savingBalance;
+		this.retireBalance = retireBalance;
+		this.investBalance = investBalance;
 	}
 
-	public double totalBalance(){
+	public double totalBalance(){ // SHOW ALL ACCOUNT BALANCE CODE
 		totalBalance = getCheckingBalance() + getSavingBalance();
 		return totalBalance;
 	}
@@ -57,6 +61,14 @@ public class Account {
 
 	public double getSavingBalance() {
 		return savingBalance;
+	}
+
+	public double getRetireBalance() { // GET RETIRE BALANCE
+		return retireBalance;
+	}
+
+	public double getInvestBalance() { // GET INVEST BALANCE
+		return investBalance;
 	}
 
 	public double calcCheckingWithdraw(double amount) {
