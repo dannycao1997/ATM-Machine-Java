@@ -8,6 +8,7 @@ public class Account {
 	private int pinNumber;
 	private double checkingBalance = 0;
 	private double savingBalance = 0;
+	private double totalBalance = 0;
 
 	Scanner input = new Scanner(System.in);
 	DecimalFormat moneyFormat = new DecimalFormat("'$'###,##0.00");
@@ -25,6 +26,11 @@ public class Account {
 		this.pinNumber = pinNumber;
 		this.checkingBalance = checkingBalance;
 		this.savingBalance = savingBalance;
+	}
+
+	public double totalBalance(){
+		totalBalance = getCheckingBalance() + getSavingBalance();
+		return totalBalance();
 	}
 
 	public int setCustomerNumber(int customerNumber) {
