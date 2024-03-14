@@ -3,7 +3,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Account {
-	// variables
+	// instance field variables
 	private int customerNumber;
 	private int pinNumber;
 	private double checkingBalance = 0;
@@ -22,7 +22,7 @@ public class Account {
 		this.customerNumber = customerNumber;
 		this.pinNumber = pinNumber;
 	}
-
+// CONSTRUCTOR
 	public Account(int customerNumber, int pinNumber, double checkingBalance, double savingBalance, double retireBalance, double investBalance) {
 		this.customerNumber = customerNumber;
 		this.pinNumber = pinNumber;
